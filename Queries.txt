@@ -1,0 +1,39 @@
+Query 1
+
+SELECT PlaylistId, max(Bytes) as bytes_order
+FROM PlaylistTrack
+JOIN Track
+ON PlaylistTrack.TrackId = Track.TrackId
+GROUP BY PlaylistId
+ORDER BY bytes_order DESC
+LIMIT 5;
+
+Query 2
+
+SELECT title, min(Milliseconds) as mss_min
+FROM track
+JOIN album
+ON track.AlbumId = album.AlbumId
+GROUP BY title
+ORDER BY mss_min
+limit 3;
+
+Query 3
+
+SELECT InvoiceDate, min(country) as mc
+FROM Invoice
+JOIN Customer
+ON Customer.CustomerId = Invoice.CustomerId
+GROUP BY InvoiceDate
+LIMIT 10;
+
+Query 4 
+
+SELECT Country, city, max(Total) as total_invoices
+FROM Customer
+JOIN Invoice
+ON Invoice.CustomerId = Customer.CustomerId
+Group By country, City
+Order By total DESC
+LIMIT 3;
+
